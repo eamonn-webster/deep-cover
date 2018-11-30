@@ -73,11 +73,16 @@ end
 RSpec::Matchers.define :run_successfully do
   match do |command|
     require 'open3'
-    options = {}
-    options[:chdir] = @from_dir if @from_dir
 
     output, errors, status = Bundler.with_clean_env do
-      Open3.capture3(*command, options)
+      if @from_dir
+        # TruffleRuby doesn't support chdir on spawn, do we just do chdir ourself all the time
+        Dir.chdir(@from_dir) do
+          Open3.capture3(*command)
+        end
+      else
+        Open3.capture3(*command)
+      end
     end
     @output = output.chomp
     @errors = errors.chomp
