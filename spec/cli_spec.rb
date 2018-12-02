@@ -12,7 +12,7 @@ module DeepCover
       out, errors, status = Bundler.with_clean_env do
         Open3.capture3(command)
       end
-      errors.should match expected_errors unless RUBY_PLATFORM == 'java'
+      errors.should match expected_errors unless RUBY_PLATFORM == 'java' || DeepCover.on_truffleruby?
       status.exitstatus.should == expected_status
       out
     end

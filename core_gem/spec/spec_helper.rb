@@ -90,7 +90,7 @@ RSpec::Matchers.define :run_successfully do
 
     @ouput_ok = @expected_output.nil? || @expected_output == @output
 
-    @exit_code == 0 && @ouput_ok && (@errors == '' || RUBY_PLATFORM == 'java')
+    @exit_code == 0 && @ouput_ok && (@errors == '' || RUBY_PLATFORM == 'java' || DeepCover.on_truffleruby?)
   end
 
   chain :and_output do |output|
