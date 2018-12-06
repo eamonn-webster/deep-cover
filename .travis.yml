@@ -9,12 +9,12 @@ rvm:
   - 2.1.10
   - jruby-head
   - jruby-9.1.9.0
-  - truffleruby
+  - truffleruby-1.0.0-rc10
 
 install:
   - gem install bundler
   # Necessary for truffleruby to handle nokogiri
-  - if [ $TRAVIS_RUBY_VERSION = "truffleruby" ]; then echo We are on truffleruby; bundle config build.nokogiri --use-system-libraries; fi
+  - if [[ $TRAVIS_RUBY_VERSION == truffleruby* ]]; then echo We are on truffleruby; bundle config build.nokogiri --use-system-libraries; fi
   - rake dev:install
   - npm install -g nyc
 script:
