@@ -109,6 +109,8 @@ module DeepCover
         end
       when :text
         Reporter::Text.report(self, **options)
+      when :json
+        Reporter::JSON.report(self, **options)
       else
         raise ArgumentError, "Unknown reporter: #{reporter}"
       end
