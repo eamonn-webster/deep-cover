@@ -62,7 +62,7 @@ table {
 * {
   box-sizing: border-box;
   border-collapse: collapse;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 
 body.source .stats table, body.source main table.source, body.source main table.source .icon, body.source main table.source .kind-empty > .empty-icon, body.source main table.source .fork-icon {

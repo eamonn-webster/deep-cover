@@ -14,7 +14,7 @@ module DeepCover
           data = transform_data(data)
           if children.empty?
             {
-              text: %{<a href="#{full_path}.html">#{partial_path}</a>},
+              text: %{<a target="deep_source" href="#{full_path}.html">#{partial_path}</a>},
               data: data,
             }
           else
